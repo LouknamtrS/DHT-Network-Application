@@ -10,7 +10,7 @@ const Navbar = () => {
             Web Name
           </div>
 
-          <div className="relative hidden md:block">
+          <div className="relative">
               <input
                 type="search"
                 placeholder="Search..."
