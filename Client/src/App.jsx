@@ -1,20 +1,41 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-// import "./App.css";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Navbar from "./component/Navbar.jsx";
 import Home from "./pages/Home.jsx";
 import Forum from "./pages/Forum.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <>
+          <Navbar />
+          <Home />
+        </>
+      ),
+    },
+    {
+      path: "/Forum",
+      element: (
+        <>
+          <Navbar />
+          <Forum />
+        </>
+      ),
+    },
+  ]);
 
   return (
     <>
-      {/* <h1 className="text-3xl font-bold underline text-center text-red-500">
-        Hello world!
-      </h1> */}
-      <Home />
-      {/* <Forum /> */}
+      <RouterProvider router={router} />
     </>
   );
 }
