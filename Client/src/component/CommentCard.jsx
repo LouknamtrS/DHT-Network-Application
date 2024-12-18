@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import user from "../assets/user.png";
 
-function OtherComments() {
+function CommentCard({ id, username, comment, date, month, year }) {
   return (
     <>
       <div className="flex-col  text-md ">
@@ -11,15 +12,17 @@ function OtherComments() {
             className="w-16 h-16 bg-white rounded-full aspect-square"
           ></img>
           <div></div>
-          <div className="font-semibold">username</div>
-          <span className="text-gray-500 text-sm">วัน เวลาที่โพสต์</span>
+          <div className="font-semibold">{username}</div>
+          <span className="text-gray-500 text-sm">
+            {date} / {month} / {year}
+          </span>
         </div>
         <div className=" w-fit ml-14 px-4 py-2 bg-white rounded-full border focus:outline-none focus:ring focus:ring-gray-300">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          {comment}
         </div>
       </div>
     </>
   );
 }
 
-export default OtherComments;
+export default CommentCard;
