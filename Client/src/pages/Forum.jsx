@@ -4,22 +4,27 @@ import { useState, useEffect } from "react";
 import CommentCard from "../component/CommentCard";
 import MyComment from "../component/MyComment";
 import user from "../assets/user.png";
-import { fetchComments } from "../api_request";
+import { fetchComments, fetchFavs, fav } from "../api_request";
 
 function Forum() {
   const [comments, setComments] = useState({});
+  const [favs, setFavs] = useState({});
 
   const postData = JSON.parse(window.localStorage.getItem("postData"));
-  console.log(postData);
+  // console.log(postData);
 
   useEffect(() => {
     GetAllComment();
   }, [comments.count]);
 
+  useEffect(() => {
+    GetAllFav();
+  }, [favs.n_fav]);
+
   const GetAllComment = async () => {
     try {
       const commentsData = await fetchComments();
-      console.log(commentsData.data);
+      // console.log(commentsData.data);
       if (
         commentsData.data &&
         Object.keys(commentsData.data).length > 0 &&
@@ -34,6 +39,38 @@ function Forum() {
         setComments(reversePostsData);
       } else {
         setComments({});
+      }
+    } catch (error) {
+      console.error("Error loading posts and comments:", error);
+    }
+  };
+
+  const GetAllFav = async () => {
+    try {
+      const favsData = await fetchFavs();
+      const filtered_fav = Object.values(favsData.data).find(
+        (item) => item.post_id === postData.id
+      );
+      if (!filtered_fav) {
+        setFavs({});
+      } else {
+        setFavs(filtered_fav);
+      }
+    } catch (error) {
+      console.error("Error loading posts and comments:", error);
+    }
+  };
+
+  const handleFav = async () => {
+    try {
+      const randomUser = String.fromCharCode(
+        97 + Math.floor(Math.random() * 26)
+      );
+      const addFav = await fav(randomUser, postData.id);
+      if (addFav) {
+        setFavs(addFav);
+        console.log(addFav);
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error loading posts and comments:", error);
@@ -83,7 +120,7 @@ function Forum() {
               <div className="flex justify-start item-center gap-6  text-gray-600 ">
                 <div
                   className="fav flex items-center gap-1"
-                  onClick={() => alert("Like This!")}
+                  onClick={handleFav}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +136,7 @@ function Forum() {
                       d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
                     />
                   </svg>
-                  <span>{postData.n_fav}</span>
+                  <span>{favs.n_fav ? favs.n_fav : 0}</span>
                 </div>
                 <div
                   className="comment flex items-center gap-1"
@@ -124,7 +161,7 @@ function Forum() {
               </div>
             </div>
             <hr className="border-gray-600 mt-3"></hr>
-            <MyComment></MyComment>
+            <MyComment />
             <div className="comment">{commentCards}</div>
           </div>
         </div>
