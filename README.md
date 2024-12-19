@@ -18,4 +18,5 @@ How to Run:
 
 3. Run terminal in Client side
 
-
+```bash
+npm run dev
