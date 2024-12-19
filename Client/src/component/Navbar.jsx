@@ -4,9 +4,9 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-300 w-full shadow-md">
       <div className="max-w-screen mx-auto">
-        <div className="flex justify-between items-center p-4 mr-2 ml-2">
-          <div className="text-gray-500 font-bold text-xl">KraToow</div>
-          <div className="relative">
+        <div className="flex justify-center items-center p-4 mr-2 ml-2">
+          <div className="text-gray-500 font-bold text-2xl">KraToow</div>
+          {/* <div className="relative">
             <input
               type="search"
               placeholder="Search..."
@@ -28,7 +28,7 @@ const Navbar = () => {
                 />
               </svg>
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>
