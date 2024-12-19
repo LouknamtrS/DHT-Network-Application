@@ -1,14 +1,14 @@
-# DHT Network Application with Microservice Architecture
+# **DHT Network Application with Microservice Architecture**
 
-How to Run:
+## **How to Run:**
 
-1. Open 4 terminals in vscode and split to:
+### **1. Open 4 terminals in vscode and split to:**
 - Client (React Vite)
 - Server (for Post service)
 - Server (for Comment service)
 - Server (for Fav service)
 
-2. Set your environments
+### **2. Set your environments**
 - Look at your IPv4Address by look at bottom-right of your screen
 - Open WiFi and click "Properties" and scroll down then you'll see it!
 - Copy your IPv4Address and back to vscode
@@ -16,12 +16,12 @@ How to Run:
 - Go to Client -> src -> api_request.jsx and paste your IP at host (keep "http:\\")
 - Go to Server -> .env then paste your IP at host
 
-3. Run terminal in Client side
+### **3. Run terminal in Client side**
 
 ```bash
 npm run dev
 ```
-4. Run terminal in Server (for Post service) side
+### **4. Run terminal in Server (for Post service) side**
   Start at path \Server\ and set up venv first
 ```bash
 cd post_service                      
@@ -34,7 +34,7 @@ cd ..
 venv\Scripts\activate
 ```
 
-5. Run terminal in Server (for Comment service) side
+### **5. Run terminal in Server (for Comment service) side**
   Start at path \Server\ and set up first
 ```bash
 cd comment_service                      
@@ -47,7 +47,7 @@ cd ..
 venv\Scripts\activate
 ```
 
-6. Run terminal in Server (for Fav service) side
+### **6. Run terminal in Server (for Fav service) side**
   Start at path \Server\ and set up first
 ```bash
 cd fav_service                      
@@ -60,7 +60,7 @@ cd ..
 venv\Scripts\activate
 ```
 
-7. You can run each Server Side by:
+### **7. You can run each Server Side by:**
    for Post service
 ```bash
 python fav_service\app.py
@@ -74,4 +74,4 @@ python fav_service\app.py
 python fav_service\app.py
 ```
 
-8. Enjoy~!
+### **8. Enjoy~!**
