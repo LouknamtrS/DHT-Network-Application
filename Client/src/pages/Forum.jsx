@@ -161,8 +161,8 @@ function Forum() {
               </div>
             </div>
             <hr className="border-gray-600 mt-3"></hr>
-            <MyComment />
             <div className="comment">{commentCards}</div>
+            <MyComment />
           </div>
         </div>
       </div>

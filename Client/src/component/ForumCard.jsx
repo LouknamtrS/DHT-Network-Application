@@ -37,7 +37,7 @@ function ForumCard({
         <NavLink
           to="/Forum"
           onClick={handleLocalStorage}
-          className="bg-white rounded-lg px-8 py-5 mx-20 w-full hover:cursor-pointer"
+          className="bg-gray-300 rounded-lg px-8 py-5 mx-20 w-full hover:cursor-pointer"
         >
           <div className="flex items-center gap-4 mb-4">
             <img
